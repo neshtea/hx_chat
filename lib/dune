@@ -1,0 +1,13 @@
+(library
+ (name hx)
+ (libraries
+  dream
+  dream-html
+  caqti
+  caqti-driver-sqlite3
+  caqti-lwt
+  lwt
+  uuidm
+  ptime
+  ptime.clock.os
+  yojson))
