@@ -46,7 +46,8 @@ module Message = struct
     let read_all () =
       let query =
         (unit ->* db_message)
-        @@ "SELECT id, username, content, timestamp FROM messages"
+        @@ "SELECT id, username, content, timestamp FROM messages ORDER BY \
+            timestamp DESC"
       in
       Db.collect_list query () |> or_error
     ;;

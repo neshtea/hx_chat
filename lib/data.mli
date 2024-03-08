@@ -22,15 +22,43 @@ module Message : sig
   val timestamp : t -> Common.Timestamp.t
 end
 
+module User : sig
+  type t
+
+  val make : string -> t
+  val name : t -> string
+end
+
 module Id_map : Map.S with type key = Common.Id.t
 
 module Chat_room : sig
-  type t
+  module type CLIENT = sig
+    type t
 
-  val make : Dream.websocket Id_map.t -> t
-  val empty : t
-  val connections : t -> Dream.websocket Id_map.t
-  val broadcast : string -> t -> unit Lwt.t
-  val connect : Dream.websocket -> t -> Common.Id.t
-  val disconnect : Common.Id.t -> t -> unit
+    val send : string -> t -> unit Lwt.t
+  end
+
+  module type S = sig
+    type elt
+    type t
+
+    val empty : t
+
+    (** [broadcast message chat_room] broadcasts the [message] to every client
+        in the [chat_room]. *)
+    val broadcast : ?exclude:Common.Id.t list -> string -> t -> unit Lwt.t
+
+    (** [whisper message id chat_room] sends the [message] to only the client with
+        [id] in the [chat_room]. *)
+    val whisper : string -> Common.Id.t -> t -> unit Lwt.t
+
+    (** [connection id chat_room] returns the connection information ({!elt})
+        from the [chat_room] if there is one. *)
+    val connection : Common.Id.t -> t -> elt option
+
+    val connect : User.t -> elt -> t -> Common.Id.t
+    val disconnect : Common.Id.t -> t -> unit
+  end
+
+  module Make (C : CLIENT) : S with type elt = C.t
 end
