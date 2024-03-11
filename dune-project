@@ -1,25 +1,33 @@
 (lang dune 3.12)
 
-(name hx)
+(name hx_chat)
 
 (generate_opam_files true)
 
 (source
- (github username/reponame))
+ (github neshtea/hx_chat))
 
-(authors "Author Name")
+(authors "Marco Schneider")
 
-(maintainers "Maintainer Name")
+(maintainers "Marco Schneider")
 
-(license LICENSE)
-
-(documentation https://url/to/documentation)
+(license MIT)
 
 (package
- (name hx)
- (synopsis "A short synopsis")
- (description "A longer description")
- (depends ocaml dune dream dream-html ptime uuidm yojson)
+ (name hx_chat)
+ (synopsis "Small example of ocaml with htmx, implementing a chat room.")
+ (description "Small example of ocaml with htmx, implementing a chat room.")
+ (depends
+  ocaml
+  dune
+  dream
+  dream-html
+  ptime
+  uuidm
+  yojson
+  caqti
+  caqti-driver-sqlite3
+  caqti-lwt)
  (tags
   (topics "to describe" your project)))
 
