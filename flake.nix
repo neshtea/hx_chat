@@ -54,6 +54,7 @@
 
             meta = {
               homepage = "https://github.com/neshtea/hx_chat";
+              mainProgram = "hx";
               description =
                 "Small example of ocaml with htmx, implementing a chat room.";
               license = pkgs.lib.licenses.mit;
