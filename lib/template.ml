@@ -118,6 +118,7 @@ let login_page req =
         ; Hh.class_ "form-control"
         ; Hh.placeholder "Your username"
         ; Hh.autofocus
+        ; Hh.required
         ]
     ; Hh.button
         [ Hh.type_ "submit"; Hh.class_ "btn btn-primary" ]
