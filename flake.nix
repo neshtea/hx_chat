@@ -43,6 +43,7 @@
             buildInputs = [
               oPkgs.dream
               oPkgs.dream-html
+              oPkgs.cmdliner
               oPkgs.ptime
               oPkgs.uuidm
               oPkgs.yojson
@@ -63,6 +64,7 @@
         devShells.default = pkgs.mkShell {
           buildInputs = [
             pkgs.dune_3
+            pkgs.sqlite
             oPkgs.ocaml
             oPkgs.merlin
             oPkgs.ocaml-lsp

@@ -116,9 +116,9 @@ let routes =
   ]
 ;;
 
-let main () =
+let main db_file =
   Dream.run
-  @@ Dream.sql_pool "sqlite3:db.sqlite?create=true&write=true"
+  @@ Dream.sql_pool (Printf.sprintf "sqlite3:%s?create=true&write=true" db_file)
   @@ Dream.logger
   @@ Dream.memory_sessions
   @@ Common.Middleware.dreamcatcher

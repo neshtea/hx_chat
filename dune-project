@@ -22,6 +22,7 @@
   dune
   dream
   dream-html
+  cmdliner
   ptime
   uuidm
   yojson
