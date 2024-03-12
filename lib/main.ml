@@ -116,8 +116,8 @@ let routes =
   ]
 ;;
 
-let main db_file =
-  Dream.run
+let main db_file interface port =
+  Dream.run ~interface ~port
   @@ Dream.sql_pool (Printf.sprintf "sqlite3:%s?create=true&write=true" db_file)
   @@ Dream.logger
   @@ Dream.memory_sessions
