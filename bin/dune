@@ -1,4 +1,17 @@
 (executable
  (public_name hx)
  (name main)
+ (modules main)
  (libraries hx cmdliner))
+
+(executable
+ (public_name hx_contacts_basic)
+ (name contacts_main)
+ (modules contacts_main)
+ (libraries hx))
+
+(executable
+ (public_name hx_contacts_htmx)
+ (name htmx_main)
+ (modules htmx_main)
+ (libraries hx))
